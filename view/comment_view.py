@@ -14,9 +14,7 @@ from action import songaction
 from util import getsinglesongallcomment_util
 
 
-def GetAllCommentOfAllSongOfSomeOne(step,coreTotal):
-
-    listenerid  = input()
+def GetAllCommentOfAllSongOfSomeOne(step,coreTotal,listenerid):
     #获取歌所有歌曲id
     SongAction = songaction.SongAction()
     CommentAction = commentaction.CommentAction()
@@ -53,11 +51,12 @@ def GetAllCommentOfAllSongOfSomeOne(step,coreTotal):
 
 
 def poolProcess():
+    listenerid  = input()
     coreTotal = multiprocessing.cpu_count()   #核的数量，也就是线程的个数
     coreTotal = int(coreTotal/2) - 1               #可能我孤陋寡闻没见过 ，3/5/7/9核的机器4
     pool = multiprocessing.Pool(coreTotal)
     for step in range(0,coreTotal):           #step 线程排名 从 0 开始  暗含一个条件   step < coretatal    等于都不行
-        pool.apply_async(GetAllCommentOfAllSongOfSomeOne,args=(step,coreTotal,))
+        pool.apply_async(GetAllCommentOfAllSongOfSomeOne,args=(step,coreTotal,listenerid))
 
     pool.close()
     pool.join()
