@@ -35,8 +35,7 @@ headers = {
 
 
 
-    "Cookie":'_ntes_nnid=933e5f4680466b8ed60d10177e9b0fa9,1532952113420; _ntes_nuid=933e5f4680466b8ed60d10177e9b0fa9; __f_=1533230102311; _iuqxldmzr_=32; WM_TID=BHgUuwIV1f%2BPOWKM7F9ODYqyKq4%2BL90%2B; vjuids=4e4e18181.16531ca0c29.0.ff7fc3cd7e886; vinfo_n_f_l_n3=9debe14f0d7bb8e1.1.0.1534138649849.0.1534138853063; __remember_me=true; __utmc=94650624; vjlast=1534138650.1534333889.13; __utmz=94650624.1534383389.23.4.utmcsr=baidu|utmccn=(organic)|utmcmd=organic; playerid=29914519; JSESSIONID-WYYY=ocpqge7VTE%5C1QOrmW9amZ3j0qxRGBelH%2FcTGbxy5%2Fr90OgE3PNKZ5l9ITsyF%2F6%5CxfO%5CJt6VVUigokf%2FHECf4b8wKRtUx7f7KFA2dxJdMdszrWz2p2JZyw8MTeQzZwyhn22pSUteJ689c%2BT0UEc9e%2BkXQo2H2sBKqcRtvpJjcm1V2zmJU%3A1534409561526; __utma=94650624.1684817944.1533695170.1534399048.1534407762.25; WM_NI=5AukCLo4o6zhgan8iP5XIPhhh8%2B2VpCAJ1PwcbGgPWO4OPaOEu4hIDeOeth8Nxj%2BXWC3ot9xkY6LQbzLfCOf1PZE6v0j19JZzAUzM%2BVR1kBBCzldqUZksg92wZunsPn9dEI%3D; WM_NIKE=9ca17ae2e6ffcda170e2e6ee9af55d93bea093d725af869fb1c8748a9e8799c4649a8996a8bb4e96be8889f82af0fea7c3b92af79fbb8cc248adeca1d7f964a5bfa2d9ec5cf78887b1eb64ace8e5d3d57c819f86d2d37da1be8988d35d8dec81b1e44587abfc89cc50a791ab95eb348ea8a6ccdb5d81eda195bc74a987faadd46aba94aaa4ce6ef39096a6b57ef4b6ffdac952ba9f9b9bd021968eff8cc14a81a6a485f45f9ab5bd88bc3ab586bb8ff25caee7aca6cc37e2a3; MUSIC_U=b69389b0ac7fff0238198edfa56c16504ac5902dbf6f5b3d59382c8a0db313a75e762eee8c053d37e10f8b3a03f16d42b5803f685b54568f85d8d9e1642db219418c90241b392a29bf122d59fa1ed6a2; __csrf=26867521e46cf5cb83e66da54939ec0c; __utmb=94650624.8.10.1534407762'
-
+    "Cookie":'_ntes_nnid=b54843e4662d37f48cf33be4813606f1,1534497592747; _ntes_nuid=b54843e4662d37f48cf33be4813606f1; _iuqxldmzr_=32; WM_TID=4fi1fG%2FOS5ERW%2FFPqzFBl53BB1hixtvf; hb_MA-BFF5-63705950A31C_source=www.baidu.com; __utmz=94650624.1534594592.2.2.utmcsr=baidu|utmccn=(organic)|utmcmd=organic; __f_=1534594592655; __remember_me=true; _ga=GA1.2.2054658316.1534646886; _gid=GA1.2.1478541200.1534646886; hb_MA-8EA5-1B4E54656795_source=www.baidu.com; __root_domain_v=.163.com; _qddaz=QD.ee1uik.ezbm5p.jl094sjd; __utmc=94650624; playerid=31938229; WM_NI=YOj45eW06SO%2BHcMXJ7xltK7Bn1GeLPKGGbabRNQiq5LvlNsUHVdXNq6gS%2Bp9pgefWw2f%2Fh7I8GHLnuxn1PMrpEiAiJ%2Bh4lxrX%2Fj%2FkxzSsEP%2Fj7OtaVRZ4droy%2BK%2BJJQLTTg%3D; WM_NIKE=9ca17ae2e6ffcda170e2e6ee82e76296bbfd8ec24aa1959eb2aa54f5a8a9d2c8509a97a593e13ffba900a3b42af0fea7c3b92a9b91a6d5b86f95f0fab4ce218cbd83b9c93dbcb4bcacb64aaeef8986cf5c89998983e46a92929f8af43f90aaa4aff25f8c8aacb9cd7bf6b99dccf333b4b9ab87d67df2bae189b643fc9988aded7fbcb2ffb1d07ab49ba7a2ec42e9b8fc8dfb7a9cf1a6d0ea74ba8dbda6d325aae98195e45e9286fc85f165bbf585ccc94293949cb5e637e2a3; JSESSIONID-WYYY=3JRuAIFf%2FjhjFWwwKgq22Gi4Wzv8r6xj8RhsNdGDuM%2BFASyEFAYCtaxlx2%2BAYU3hObZSER6fkHzbUy8uo4xQNHJ7xqbiY43yru7B7M%5C%5CjiiIuAcJAie5CQx6HkmcTaC3qRcyu9iFfy%5Cu1lXj45TP4wqPYZKiy%2BHw26avlJgR%2B%5CGKmhPN%3A1534692022357; __utma=94650624.239093928.1534509264.1534682731.1534690425.11; MUSIC_U=b69389b0ac7fff0238198edfa56c16504ac5902dbf6f5b3d59382c8a0db313a7cbe6d5c0d97cd3bf450e6711710193c1bdacb52a57efbf6e964b527f29d7d8288ab9ad06a6e73154bf122d59fa1ed6a2; __csrf=3146cb7261a86fc331a019db794db95d; __utmb=94650624.29.10.1534690425'
 }
 
 #获取params
@@ -111,7 +110,7 @@ def get_comment(songid,step):
         else:
             totalPage = int(comments_sum/20) + 1
     except Exception as e:
-        print('进程',step,"获取评论总页面出错，错误为：",e)
+        print('进程',step,"获取评论总页面出错，错误为：",e,'神秘代码',json_text)
         time.sleep(5)
         return 0
     else:
@@ -128,10 +127,10 @@ def get_comment(songid,step):
                 json_text    = get_json(url, data)
                 json_dict    = json.loads(json_text.decode("utf-8"))
                 json_comments = json_dict['comments']   #一次json返回一页面评论
-                print('已经获取一页json,歇会')
+                print('进程',step,'已经获取一页json,歇会')
                 time.sleep(2)
             except Exception as e:
-                print('进程',step,"获取第",page,"页json数据出错，错误是：",e)
+                print('进程',step,"获取第",page,"页json数据出错，错误是：",e,'神秘代码',json_text)
                 time.sleep(10)
                 return 0
             else:
