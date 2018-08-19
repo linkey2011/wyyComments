@@ -15,11 +15,20 @@ import json
 import time
 from  fake_useragent import UserAgent
 from action import songaction, commentaction
-from action.commentaction import CommentAction
-from action.songaction import SongAction
 from model.entity import  comment
-
+import os
 uaObj = UserAgent()
+
+
+
+#
+# f = open(os.path.abspath('..')+'\\resource\\cookie.txt')
+# myCookie = str(f.read())
+# print(myCookie)
+# f.close()
+#
+#
+
 
 proxies = {
     'http':'127.0.0.1:1080',
@@ -32,12 +41,8 @@ headers = {
     'Accept': '*/*',
     'Accept-Encoding': 'gzip, deflate',
     'Accept-Language': 'zh-CN,zh;q=0.8',
-
-
-
-    "Cookie":'JSESSIONID-WYYY=S02voAW%2FlsB73k%5CI8hJ7r2DyAbEjt4OBrmqyoPERHFEDbCogcXu2RT8WkrRdnJ6uWa443wh%2FuJa1TwblHUAE3f2hGQ%5C9HKW5HUh5jnUgyIwVUZxB0%2FXw%5CSzxx8tKdFoGkn71lQzPTVT7dOcYaKkeZpQKT8dQT3%2BJTm4OhgaXyjGVHBJc%3A1534693422094; _iuqxldmzr_=32; _ntes_nnid=85486da3b45afb0b02d5e8e84986fd3c,1534691622120; _ntes_nuid=85486da3b45afb0b02d5e8e84986fd3c; __utma=94650624.1393191032.1534691622.1534691622.1534691622.1; __utmc=94650624; __utmz=94650624.1534691622.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); WM_NI=uqWIsQ0oCz1NwkarNHZWAgdNxT8UEf6BNcjDeaCaLjllSOVkCQZZPe4pzG%2BZ56hJrjQyeYV89ohoAxCiScS6eqOZUOFS3sN3f%2FnR6RvBq%2B19EApqb%2B%2F5FbnTh8as4y8YWHA%3D; WM_NIKE=9ca17ae2e6ffcda170e2e6eed8d95b96bcbdaad87df5f597aeb33f8beca689c8409ab09c95f321b1b0bea3f62af0fea7c3b92ab7af99aaf25bf4b18d9bb446b5b5af93cd449a898f88e746bc8cf8b6c86ef69e8284e950a7bf8d82cf62b0b49db0d561818f96bbd36ff8b0b6a8aa52f7eaa8abf16293a7abbad534fbb1a890c47481b79d84d23ea7af81bbd845868dfd94cd39a6f1a2b3b55ab69ebfccb433879fc092e121edeb8a83ed60ace8af94b773fc8799a9c437e2a3; WM_TID=z7vbcBuk6qCbl2hzioBPRYC19eh11PBe; __utmb=94650624.3.10.1534691622'
+    "Cookie":'JSESSIONID-WYYY=no6Z%2B3mtgpzNgJ0P0lJ0enE%2BDtEOjir8tQ7mZ%5CyhmQoNgYNKta9zje%2B46UiHKWK%5C80ulivMteTb%5Cfx9wNGNyZk556I%2BQ1%2Fs%5CcxlMQNBJ4md%2BFiI%2BV1rFBl8VMag1N4hipVZ%5Cml85ERo27xEsDciPhABZlWik7eFS85AVUqjaFfBOQOCc%3A1534700104425; _iuqxldmzr_=32; _ntes_nnid=d3e814a9e3f82c6655fa0bc766cd198c,1534698304445; _ntes_nuid=d3e814a9e3f82c6655fa0bc766cd198c; __utma=94650624.1943392121.1534698305.1534698305.1534698305.1; __utmc=94650624; __utmz=94650624.1534698305.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); WM_NI=hrH%2Bu%2B3vtOlVQnbMgo0wzL6YFlefXAYjSgVEboL4h8zsChJc%2Fahztwo5Q6qsV1bigbF41V8A9K%2BDmwmKrCJNXPR5V3C9MYOSbMJhf37V2ieuFDvQ9ge4Zlo36XCdpUOXaDk%3D; WM_NIKE=9ca17ae2e6ffcda170e2e6ee86c7468fbabfadea33edebe190f146ae928c85c7709b8caa9aeb418cbf86afe12af0fea7c3b92aacae88ccf821f1aabcb0ef5e93b2aeaee665f4a9b6adb55386b4ab87db4b9bb69d88d54fa2b184d5eb34baad8d89c969edbfa89bf77dadeb9fd7f47996efae8ae66a86ecffb7bb4bfb95e5a5f07daf95bea4c9469c909ed6d53981e783bace59a2938689e539f58afe8ae87f869cbab2bc6da7ec968dee39f6888d85f35f8d88afa5ea37e2a3; WM_TID=CCZ1rYrUZQYNe21sCulMzaFN%2BnKMfB2B; __utmb=94650624.3.10.1534698305'
 }
-
 #获取params
 def get_params(first_param, forth_param):
     iv = "0102030405060708"
@@ -128,7 +133,7 @@ def get_comment(songid,step):
                 json_dict    = json.loads(json_text.decode("utf-8"))
                 json_comments = json_dict['comments']   #一次json返回一页面评论
                 print('进程',step,'已经获取一页json,歇会')
-                time.sleep(2)
+                time.sleep(5)
             except Exception as e:
                 print('进程',step,"获取第",page,"页json数据出错，错误是：",e,'神秘代码',json_text)
                 time.sleep(10)
