@@ -41,7 +41,7 @@ headers = {
     'Accept': '*/*',
     'Accept-Encoding': 'gzip, deflate',
     'Accept-Language': 'zh-CN,zh;q=0.8',
-    "Cookie":'JSESSIONID-WYYY=no6Z%2B3mtgpzNgJ0P0lJ0enE%2BDtEOjir8tQ7mZ%5CyhmQoNgYNKta9zje%2B46UiHKWK%5C80ulivMteTb%5Cfx9wNGNyZk556I%2BQ1%2Fs%5CcxlMQNBJ4md%2BFiI%2BV1rFBl8VMag1N4hipVZ%5Cml85ERo27xEsDciPhABZlWik7eFS85AVUqjaFfBOQOCc%3A1534700104425; _iuqxldmzr_=32; _ntes_nnid=d3e814a9e3f82c6655fa0bc766cd198c,1534698304445; _ntes_nuid=d3e814a9e3f82c6655fa0bc766cd198c; __utma=94650624.1943392121.1534698305.1534698305.1534698305.1; __utmc=94650624; __utmz=94650624.1534698305.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); WM_NI=hrH%2Bu%2B3vtOlVQnbMgo0wzL6YFlefXAYjSgVEboL4h8zsChJc%2Fahztwo5Q6qsV1bigbF41V8A9K%2BDmwmKrCJNXPR5V3C9MYOSbMJhf37V2ieuFDvQ9ge4Zlo36XCdpUOXaDk%3D; WM_NIKE=9ca17ae2e6ffcda170e2e6ee86c7468fbabfadea33edebe190f146ae928c85c7709b8caa9aeb418cbf86afe12af0fea7c3b92aacae88ccf821f1aabcb0ef5e93b2aeaee665f4a9b6adb55386b4ab87db4b9bb69d88d54fa2b184d5eb34baad8d89c969edbfa89bf77dadeb9fd7f47996efae8ae66a86ecffb7bb4bfb95e5a5f07daf95bea4c9469c909ed6d53981e783bace59a2938689e539f58afe8ae87f869cbab2bc6da7ec968dee39f6888d85f35f8d88afa5ea37e2a3; WM_TID=CCZ1rYrUZQYNe21sCulMzaFN%2BnKMfB2B; __utmb=94650624.3.10.1534698305'
+    "Cookie":'_iuqxldmzr_=32; _ntes_nnid=b1e5bb4939794b0b1537627220a25585,1534698463481; _ntes_nuid=b1e5bb4939794b0b1537627220a25585; __utmc=94650624; WM_TID=7dETf%2BqkrscMK8uT4klP4LVcmzbW0DZy; hb_MA-BFF5-63705950A31C_source=www.baidu.com; __f_=1534737106682; __utmz=94650624.1534737104.2.2.utmcsr=baidu|utmccn=(organic)|utmcmd=organic; playerid=21595483; JSESSIONID-WYYY=NRho9KD9MpUhatXWWaXWYd%2BYfZYDf0ql7eoXS2pRKQOiDF%5C%2B71b4yRsmo6Rcz%5CapUIDsRTM97%2FJ6cpSY8FlUSWikziovmreBjiHJhD993cvsqQilakFq8XdOiwxn%5CDyD%2BSp8YT%5CP1abCGpsn0fXcv5eXTNoiga7cb6Cw2G%5C013OZc%5C7m%3A1534752658208; __utma=94650624.1104846434.1534698464.1534737104.1534750858.3; WM_NI=iP9ldZ4wndxishqmokv%2Fi9aJgXBTsCxs7xS4Xc0oX%2BedPNhRaaGaXjrPBomwQUvY9FNvP41RpempAQdB%2FZUQFWEZSk%2FnhMod%2BAQ0IidhkKARYdQJImoGyazPAyI5Rpf9ZXQ%3D; WM_NIKE=9ca17ae2e6ffcda170e2e6ee8fb1648dbebe8dc821838a96a3c5408be8acafce39b3f1beaadc59ab98f8b6d62af0fea7c3b92aab90f78de752f8a9a285fb63b1b8bf8eee61b6f1a7dae442a5888eb5f249bcadf999d2409cbd0090db21a7bca0afeb5aa3bf8982db62b2908e90f07d938bbababc4e8eaaa0d5b45ab4bba391c45ba89ee1bbd85b86898bbbd261edb2a8aeee70e99f9fd1cc63a8b8a5acc45a9bbc9fabcc67ad99b782f95c83a787d6d17ca6e796b9d437e2a3; __utmb=94650624.4.10.15347508582'
 }
 #获取params
 def get_params(first_param, forth_param):
@@ -162,7 +162,7 @@ def get_comment(songid,step):
                     else:
                         num  ="%-2s" % p
                         printPage = "%-4s" % nowPage
-                        print('进程',step,printPage, '页 第',num,'个',commentNew.time,commentNew.username,"写道: " ,commentNew.content,"   点赞数：",commentNew.zan)
+                        print('进程',step,printPage, '页 第',num,'个',commentNew.time,songid,commentNew.username,"写道: " ,commentNew.content,"   点赞数：",commentNew.zan)
         print('进程',step,songid,"评论爬取完成")
         return 1      #只有爬完了才能返回1
     finally:
