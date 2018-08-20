@@ -27,6 +27,7 @@ class CommentDao:
           userid   varchar(255), 
           zan      varchar(255), 
           onpage   varchar(255), 
+          time     varchar(255),
           primary  key (id)
         ) DEFAULT CHARSET=utf8mb4 """ % songid
         try:
@@ -41,7 +42,7 @@ class CommentDao:
             cursor.close()
             cursor.close()
 
-    #插入新歌
+    #插入评论
     def InsertComment(self,comment,songid):
         connectObj = db_util.ConnectToMysql()
         connect    = connectObj.getConnect()
@@ -52,13 +53,14 @@ class CommentDao:
         userid = comment.userid
         zan = comment.zan
         onpage = comment.onpage
+        time   = comment.time
 
         content = content.replace("'","\\\'")
         content = content.replace('"','\\\"')  #防止因为含有【"】【'】导致sql语句执行出错
         username = username.replace("'","\\\'")
         username = username.replace('"','\\\"')  #防止因为含有【"】【'】导致sql语句执行出错
-        sql  = "INSERT INTO songid_%s (content,username,userid,zan,onpage)VALUE ('%s','%s', '%s','%s','%s')"
-        data = (songid,content,username,userid,zan,onpage)
+        sql  = "INSERT INTO songid_%s (content,username,userid,zan,onpage,time)VALUE ('%s','%s','%s', '%s','%s','%s')"
+        data = (songid,content,username,userid,zan,onpage,time)
         try:
             cursor.execute(sql % data)
             connect.commit()

@@ -16,7 +16,7 @@ import time
 from  fake_useragent import UserAgent
 from action import songaction, commentaction
 from model.entity import  comment
-import os
+from util import commenttime_util
 uaObj = UserAgent()
 
 
@@ -149,6 +149,8 @@ def get_comment(songid,step):
                     #封装数据
                     commentNew.username = str(json_comment['user']['nickname'])  #用户名
                     commentNew.content  = str(json_comment['content'] )          #评论内容
+                    sjc                 = json_comment['time']
+                    commentNew.time     = commenttime_util.CommentTime(sjc)
                     commentNew.onpage   = nowPage                                #评论所在页面
                     commentNew.zan      = json_comment['likedCount']             #点赞数
                     commentNew.userid   = str(json_comment['user']['userId'])    #用户的id标志
@@ -158,7 +160,7 @@ def get_comment(songid,step):
                         print('进程',step,"插入评论出错")
                         time.sleep(10)
                     else:
-                        show = '%s%s%s%s%s%s%s' % (songid,": " ,commentNew.username, "写道: " ,commentNew.content,"   点赞数：",commentNew.zan)
+                        show = '%s%s%s%s%s%s%s%s' % (songid,": " ,commentNew.username, "在", commentNew.time,"写道: " ,commentNew.content,"   点赞数：",commentNew.zan)
                         num  ="%-2s" % p
                         printPage = "%-4s" % nowPage
                         print('进程',step,' ',printPage, '页 第',num,'个',' ',show)

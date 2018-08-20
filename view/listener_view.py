@@ -2,6 +2,9 @@
 from  action import listeneraction
 from  model.entity import listener
 import re
+import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.getcwd(), "/..")))
 
 #查看库中已有全部听众id
 def ShowAllListenerId():

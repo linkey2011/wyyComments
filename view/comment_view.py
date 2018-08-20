@@ -7,12 +7,16 @@
 @File    : comment_view.py
 
 """
+import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.getcwd(), "/..")))
+
 import multiprocessing
 import  time
 from action import commentaction
 from action import songaction
 from util import getsinglesongallcomment_util
-
+import datetime
 
 def GetAllCommentOfAllSongOfSomeOne(step,coreTotal,listenerid):
     #获取歌所有歌曲id
@@ -26,7 +30,7 @@ def GetAllCommentOfAllSongOfSomeOne(step,coreTotal,listenerid):
         if i % coreTotal == step:
             #获取要爬取的歌的
             songid = AllSongOfSomeone[i][0]
-
+            songid = '34532868'
             #验证是否爬完
             finish = SongAction.GetFinish(songid)
             if finish == 1:
@@ -40,7 +44,9 @@ def GetAllCommentOfAllSongOfSomeOne(step,coreTotal,listenerid):
                 ans = getsinglesongallcomment_util.main(songid,step)
                 if ans == 0:
                     i = i - 1  #报错的话，退回重新获取
-                    print("进程",step,"getsinglesongallcomment_util模块出错, 后退一步")
+                    now = datetime.datetime.now()
+
+                    print("进程",step,"getsinglesongallcomment_util模块出错, 后退一步     当前时间： ",now)
                     time.sleep(5)
                 elif ans == 1:
                     SongAction.UpdateFinish(songid)            #爬完了标注一下

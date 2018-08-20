@@ -4,6 +4,10 @@ from view import listener_view
 from view import songlist_view
 from util import feedback_util
 from view import comment_view
+import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.getcwd(), "/..")))
+
 import time
 CONTEXT = "[*]:主菜单\n" \
           "[1]:添加听众\n" \

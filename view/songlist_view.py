@@ -12,6 +12,9 @@ from  util import bar_util
 from util import getsong_util
 
 
+import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.getcwd(), "/..")))
 
 # 功能尚未是实现，暂时手动填写
 def GetAllSonglistIdOfSomeone(listenerid):
