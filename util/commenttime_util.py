@@ -17,4 +17,5 @@ def CommentTime(sjc):
     st = time.localtime(sjc)  #时间戳结构化
 
     mytime = time.strftime('%Y-%m-%d %H:%M:%S', st)
+    mytime = str(mytime)
     return  mytime

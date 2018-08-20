@@ -30,7 +30,6 @@ def GetAllCommentOfAllSongOfSomeOne(step,coreTotal,listenerid):
         if i % coreTotal == step:
             #获取要爬取的歌的
             songid = AllSongOfSomeone[i][0]
-            songid = '34532868'
             #验证是否爬完
             finish = SongAction.GetFinish(songid)
             if finish == 1:
@@ -63,7 +62,7 @@ def poolProcess():
     time.sleep(1)
     coreTotal = multiprocessing.cpu_count()   #核的数量，也就是线程的个数
     coreTotal = int(coreTotal/2) - 1               #可能我孤陋寡闻没见过 ，3/5/7/9核的机器4
-
+    coreTotal =  1
     pool = multiprocessing.Pool(coreTotal)
     for step in range(0,coreTotal):           #step 线程排名 从 0 开始  暗含一个条件   step < coretatal    等于都不行
         pool.apply_async(GetAllCommentOfAllSongOfSomeOne,args=(step,coreTotal,listenerid))
@@ -80,4 +79,7 @@ def poolProcess():
 def main(command):
     if command == "5":
         poolProcess()
-
+        # coreTotal = 1
+        # listenerid = "632781761"
+        # step = 0
+        # GetAllCommentOfAllSongOfSomeOne(step,coreTotal,listenerid)

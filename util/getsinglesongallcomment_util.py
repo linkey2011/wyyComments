@@ -133,7 +133,7 @@ def get_comment(songid,step):
                 json_dict    = json.loads(json_text.decode("utf-8"))
                 json_comments = json_dict['comments']   #一次json返回一页面评论
                 print('进程',step,'已经获取一页json,歇会')
-                time.sleep(5)
+                # time.sleep(5)
             except Exception as e:
                 print('进程',step,"获取第",page,"页json数据出错，错误是：",e,'神秘代码',json_text)
                 time.sleep(10)
@@ -160,10 +160,9 @@ def get_comment(songid,step):
                         print('进程',step,"插入评论出错")
                         time.sleep(10)
                     else:
-                        show = '%s%s%s%s%s%s%s%s' % (songid,": " ,commentNew.username, "在", commentNew.time,"写道: " ,commentNew.content,"   点赞数：",commentNew.zan)
                         num  ="%-2s" % p
                         printPage = "%-4s" % nowPage
-                        print('进程',step,' ',printPage, '页 第',num,'个',' ',show)
+                        print('进程',step,printPage, '页 第',num,'个',commentNew.time,commentNew.username,"写道: " ,commentNew.content,"   点赞数：",commentNew.zan)
         print('进程',step,songid,"评论爬取完成")
         return 1      #只有爬完了才能返回1
     finally:
