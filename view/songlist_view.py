@@ -28,7 +28,7 @@ def GetAllSonglistIdOfSomeone(listenerid):
 def DownLoadSongList():
     print('你想爬谁的歌单？输入她的id：',end='')
     listenerid = input();
-  #  listenerid = '632781761'
+    listenerid = '74186909'
     second = 5
     print("原则上此时应该根据输入的听众id -->获取其所有歌单id，由于此功能暂未完成，手台已经手动填写完毕，休息",second,"秒")
     bar_util.bar(second)

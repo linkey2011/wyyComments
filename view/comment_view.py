@@ -56,13 +56,13 @@ def GetAllCommentOfAllSongOfSomeOne(step,coreTotal,listenerid):
 
 
 def poolProcess():
-    listenerid = "632781761"
+    listenerid = "74186909"
     #listenerid  = input()
-    print("此时默认id= 632781761  不用输入了")
+    print("此时默认id= 74186909 不用输入了")
     time.sleep(1)
     coreTotal = multiprocessing.cpu_count()   #核的数量，也就是线程的个数
     workingcoreTotal = int(coreTotal/2) - 1               #可能我孤陋寡闻没见过 ，3/5/7/9核的机器
- #   coreTotal = 3
+    workingcoreTotal = 1
     pool = multiprocessing.Pool(workingcoreTotal)
     for step in range(0,workingcoreTotal):    #step 线程排名 从 0 开始  暗含一个条件   step <  workingcoreTotal    等于都不行
         pool.apply_async(GetAllCommentOfAllSongOfSomeOne,args=(step,workingcoreTotal,listenerid))
