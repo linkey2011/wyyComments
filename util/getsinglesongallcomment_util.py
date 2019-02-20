@@ -125,7 +125,7 @@ def get_comment(songid,step):
         # 逐页面获取评论，并插入
         for page in range(lastPage, totalPage + 1):   #起始页面为lastpage
             if page % 11 == 0:
-                print('休息周期')
+                print('休息周期,请等待',RestCycleTime,"秒")
                 time.sleep(RestCycleTime)
 
             #获取当前页面所有评论的json数据
@@ -135,7 +135,7 @@ def get_comment(songid,step):
                 json_text    = get_json(url, data)
                 json_dict    = json.loads(json_text.decode("utf-8"))
                 json_comments = json_dict['comments']   #一次json返回一页面评论
-                print('进程',step,'已经获取一页json,歇会')
+                print('进程',step,'已经获取一页json,请等待',RoutineRestTime,'秒')
                 time.sleep(RoutineRestTime)
             except Exception as e:
                 print('进程',step,"获取第",page,"页json数据出错，错误是：",e,'神秘代码',json_text)
