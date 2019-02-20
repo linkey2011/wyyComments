@@ -61,10 +61,11 @@ def poolProcess():
     print("此时默认id= 632781761  不用输入了")
     time.sleep(1)
     coreTotal = multiprocessing.cpu_count()   #核的数量，也就是线程的个数
-    coreTotal = int(coreTotal/2) - 1               #可能我孤陋寡闻没见过 ，3/5/7/9核的机器4
-    pool = multiprocessing.Pool(coreTotal)
-    for step in range(0,coreTotal):           #step 线程排名 从 0 开始  暗含一个条件   step < coretatal    等于都不行
-        pool.apply_async(GetAllCommentOfAllSongOfSomeOne,args=(step,coreTotal,listenerid))
+    workingcoreTotal = int(coreTotal/2) - 1               #可能我孤陋寡闻没见过 ，3/5/7/9核的机器
+ #   coreTotal = 3
+    pool = multiprocessing.Pool(workingcoreTotal)
+    for step in range(0,workingcoreTotal):    #step 线程排名 从 0 开始  暗含一个条件   step <  workingcoreTotal    等于都不行
+        pool.apply_async(GetAllCommentOfAllSongOfSomeOne,args=(step,workingcoreTotal,listenerid))
 
     pool.close()
     pool.join()

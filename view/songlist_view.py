@@ -27,9 +27,10 @@ def GetAllSonglistIdOfSomeone(listenerid):
 # actionname = '更新听众所有歌单'
 def DownLoadSongList():
     print('你想爬谁的歌单？输入她的id：',end='')
-    listenerid = '632781761'
-    second = 1
-    print("获取所有歌单的id功能暂未完成,手动填写，   休息",second,"秒")
+    listenerid = input();
+  #  listenerid = '632781761'
+    second = 5
+    print("原则上此时应该根据输入的听众id -->获取其所有歌单id，由于此功能暂未完成，手台已经手动填写完毕，休息",second,"秒")
     bar_util.bar(second)
     AllSonglistId = GetAllSonglistIdOfSomeone(listenerid)
     action = songaction.SongAction()

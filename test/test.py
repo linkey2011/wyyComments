@@ -1,29 +1,32 @@
-from util import db_util
-
-connectObj = db_util.ConnectToMysql()
-connect    = connectObj.getConnect()
-cursor  = connect.cursor()
-
-sql = "select table_name from information_schema.tables where table_schema= '%s'" % 'wyy'
-print(sql)
-cursor.execute('use information_schema')
-cursor.execute(sql)
-v = cursor.fetchall()
-cursor.execute('use wyy')
-for single in  v:
-    # single = 'songtotal'
-    sql = 'Describe %s  time'% single
-    cursor.execute(sql)
-    try:
-        v = cursor.fetchone()
-
-        v1 = v[0]
-        # print(v1)
-    except:
-        sql = 'ALTER TABLE %s ADD  time varchar(255)' % single
-        print(sql)
+import json
+import sys, io
+from urllib.request import urlopen
 
 
-connect.commit()
+playlistId = 979458599
+
+
+# urladd = "http://music.163.com/api/playlist/detail?id=979458599"
+#     # Your code where you can use urlopen
+# with urlopen(urladd) as url:
+#     response = url.read().decode('utf-8')
+
+txt = open('1.txt','r', encoding='UTF-8')
+response = txt.read()
+data = json.loads(response)
+
+
+playlistName = data["result"]["name"]
+tracks = data['result']['tracks']
+i = 0
+for track in tracks:
+    i += 1
+    print(i)
+    trackName = track["name"]
+    artist = track["artists"][0]["name"]
+    output = trackName + ' - ' + artist + '\n'
+    with open(playlistName+'.txt', 'a',encoding='utf-8') as file:
+        file.write(output)
+
 
 
