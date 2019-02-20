@@ -6,8 +6,8 @@ from util import feedback_util
 from view import comment_view
 import os
 import sys
-sys.path.append(os.path.abspath(os.path.join(os.getcwd(), "/..")))
-
+sys.path.append(os.getcwd())
+print(os.getcwd())
 import time
 CONTEXT = "[*]:主菜单\n" \
           "[1]:添加听众\n" \
