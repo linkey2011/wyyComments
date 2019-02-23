@@ -61,7 +61,10 @@
     <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="TYPO" enabled_by_default="true">
       <option name="ignoredPackages">
         <value>
-          <list size="0" />
+          <list size="2">
+            <item index="0" class="java.lang.String" itemvalue="pywin32" />
+            <item index="1" class="java.lang.String" itemvalue="you-get" />
+          </list>
         </value>
       </option>
     </inspection_tool>
