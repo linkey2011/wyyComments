@@ -142,8 +142,8 @@ def get_comment(songid,step):
                 time.sleep(ErrorRestTime)
                 return 0
             else:
-                # 重复性判断
-                if judging(json_comments,songid,page) == 0:
+                # 评论重复性判断   0  没有重复  1  重复
+                if judging(json_comments,songid,page) == 1:
                     msg = '评论已经重复'
                     title = '网易云音乐爬虫'
                     dog = bark.Bark()
@@ -199,10 +199,12 @@ def CommentPackage(json_comment,nowPage):
 
     return  commentNew
 
-#评论重复性判断
+#评论重复性判断   0  没有重复  1  重复
 def judging(json_comments,songid,page):
     CommentAction = commentaction.CommentAction()
     maxid = CommentAction.GetMaxID(songid)
+    if maxid == None or maxid <= 20:
+        return 0
     p = 0
     total = 0
     for json_comment in json_comments:
@@ -216,9 +218,9 @@ def judging(json_comments,songid,page):
 
 
     if(total == 3):
-        return 0
-    else:
         return 1
+    else:
+        return 0
 
 def main(songid,step):
    ans =  get_comment(songid,step)
