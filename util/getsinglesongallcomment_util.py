@@ -17,8 +17,8 @@ from  fake_useragent import UserAgent
 from action import songaction, commentaction
 from model.entity import  comment
 from util import commenttime_util
+from barktime import bark
 uaObj = UserAgent()
-
 
 
 #
@@ -96,9 +96,9 @@ def crypt_api(id, offset):
 
 # 获取评论
 def get_comment(songid,step):
-    RestCycleTime = 300
-    ErrorRestTime = 5
-    RoutineRestTime = 1
+    RestCycleTime = 0      #周期休息时间
+    ErrorRestTime = 5      #错误休息等待时间
+    RoutineRestTime = 0    #日常休息时间
     SongAction = songaction.SongAction()
     CommentAction = commentaction.CommentAction()
     commentNew = comment.Comment()
@@ -142,6 +142,16 @@ def get_comment(songid,step):
                 time.sleep(ErrorRestTime)
                 return 0
             else:
+                # 重复性判断
+                if judging(json_comments,songid,page) == 0:
+                    msg = '评论已经重复'
+                    title = '网易云音乐爬虫'
+                    dog = bark.Bark()
+                    dog.Notice(msg,0,title)
+                    print(msg)
+                    time.sleep(10)
+                    return 0
+
                 p       =  0   #当前页面的的评论排名
                 nowPage = page  #当前爬取的评论所在页面
                 # 一个个 的插入评论
@@ -149,14 +159,16 @@ def get_comment(songid,step):
                 for json_comment in json_comments:
 
                     p += 1
-                    #封装数据
-                    commentNew.username = str(json_comment['user']['nickname'])  #用户名
-                    commentNew.content  = str(json_comment['content'] )          #评论内容
-                    sjc                 = json_comment['time']
-                    commentNew.time     = commenttime_util.CommentTime(sjc)
-                    commentNew.onpage   = nowPage                                #评论所在页面
-                    commentNew.zan      = json_comment['likedCount']             #点赞数
-                    commentNew.userid   = str(json_comment['user']['userId'])    #用户的id标志
+                    commentNew = CommentPackage(json_comment,nowPage)
+                    # #封装数据
+                    # commentNew.username = str(json_comment['user']['nickname'])  #用户名
+                    # commentNew.content  = str(json_comment['content'] )          #评论内容
+                    # sjc                 = json_comment['time']                   # 时间戳
+                    # commentNew.time     = commenttime_util.CommentTime(sjc)
+                    # commentNew.onpage   = nowPage                                #评论所在页面
+                    # commentNew.zan      = json_comment['likedCount']             #点赞数
+                    # commentNew.userid   = str(json_comment['user']['userId'])    #用户的id标志
+
 
                     ans = CommentAction.InsertComment(commentNew,songid)
                     if ans != 1:
@@ -173,6 +185,40 @@ def get_comment(songid,step):
         CommentAction.__del__()
         commentNew.__del__()
 
+#封装评论
+def CommentPackage(json_comment,nowPage):
+    commentNew = comment.Comment()
+
+    commentNew.username = str(json_comment['user']['nickname'])  #用户名
+    commentNew.content  = str(json_comment['content'] )          #评论内容
+    sjc                 = json_comment['time']                   # 时间戳
+    commentNew.time     = commenttime_util.CommentTime(sjc)
+    commentNew.onpage   = nowPage                                #评论所在页面
+    commentNew.zan      = json_comment['likedCount']             #点赞数
+    commentNew.userid   = str(json_comment['user']['userId'])    #用户的id标志
+
+    return  commentNew
+
+#评论重复性判断
+def judging(json_comments,songid,page):
+    CommentAction = commentaction.CommentAction()
+    maxid = CommentAction.GetMaxID(songid)
+    p = 0
+    total = 0
+    for json_comment in json_comments:
+
+        p += 1
+        if (p == 1 or p == 10 or p == 20 ):
+            commentOld = CommentAction.GetCommentbyID(songid,maxid + p - 20)
+            commentNew = CommentPackage(json_comment,page)
+            if(commentNew.content == commentOld.content and commentNew.time == commentOld.time):
+                total = total + 1
+
+
+    if(total == 3):
+        return 0
+    else:
+        return 1
 
 def main(songid,step):
    ans =  get_comment(songid,step)
