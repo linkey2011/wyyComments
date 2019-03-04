@@ -14,13 +14,14 @@ class Comment:
     def __del__(self):
         pass
 
-    def __init__(self,time = "默认值",content= "默认值",username= "默认值",userid= "默认值",zan= "默认值",onpage= "默认值"):
+    def __init__(self,time = "默认值",content= "默认值",username= "默认值",userid= "默认值",zan= "默认值",onpage= "默认值",id = '默认值'):
         self.time = time
         self.content = content
         self.username = username
         self.userid = userid
         self.zan = zan
         self.onpage = onpage
+        self.id = id
 
     def gettime(self):
         return self.time
@@ -58,3 +59,11 @@ class Comment:
 
     def setonpage(self, onpage):
         self.onpage= onpage
+
+
+
+    def getid(self):
+            return self.id
+
+    def setid(self, id):
+        self.id = id
