@@ -68,7 +68,80 @@ class CommentDao:
             print("插入评论出错",'错误是:', e)
             return 0
         else:
-            return 1
+
+
+            return  1
         finally:
             cursor.close()
             connect.close()
+
+    #根据歌曲id, 用户id，评论内容和时间四个方面唯一标志一个评论，并获取此评论的id
+    def GetCommentID(self,songid,userid,content,time):
+        connectObj = db_util.ConnectToMysql()
+        connect    = connectObj.getConnect()
+        cursor  = connect.cursor()
+        #SELECT id FROM songid_28854182 WHERE username = '许家的小可爱' AND content = '唱不了啊[大哭]' AND time = '2018-07-29 18:53:46'
+        sql  = "SELECT id from songid_%s WHERE userid = '%s' AND content = '%s' AND time = '%s'"
+        data = (songid,userid,content,time)
+        try:
+
+            cursor.execute(sql % data)
+            connect.commit()
+        except Exception as  e:
+            print("获取最新评论主键id出错",'错误是:', e)
+            return 0
+        else:
+            result = cursor.fetchall()
+            length = len(result)
+
+            return result[length - 1][0]
+        finally:
+            cursor.close()
+            connect.close()
+
+    #获取当前最新插入的评论的id值
+    def GetMaxID(self,songid):
+        connectObj = db_util.ConnectToMysql()
+        connect    = connectObj.getConnect()
+        cursor  = connect.cursor()
+
+        sql  = "select max(id) from songid_%s"
+        data = (songid)
+        try:
+            cursor.execute(sql % data)
+            connect.commit()
+        except Exception as  e:
+            print("获取max id出错",'错误是:', e)
+            return 0
+        else:
+            return cursor.fetchone()[0]
+        finally:
+            cursor.close()
+            connect.close()
+
+
+    #根据id获取评论
+    def GetCommentbyID(self,songid,id):
+        connectObj = db_util.ConnectToMysql()
+        connect    = connectObj.getConnect()
+        cursor  = connect.cursor()
+        #SELECT * FROM `songid_28854182` WHERE id = 10058
+        sql  = "SELECT * FROM songid_%s WHERE id = '%s'"
+        data = (songid,id)
+        try:
+          #  print(sql % data)
+            cursor.execute(sql % data)
+            connect.commit()
+        except Exception as  e:
+            print("根据id获取评论出错",'错误是:', e)
+            return 0
+        else:
+            return cursor.fetchone()
+        finally:
+            cursor.close()
+            connect.close()
+
+
+# b = CommentDao()
+# res = b.GetCommentbyID(28854182,10058)
+# print(res)
