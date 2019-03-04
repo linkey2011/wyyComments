@@ -11,14 +11,19 @@ from urllib import request
 from urllib.parse import quote
 import string
 import configparser
+import os
+
 class Bark:
     #读取bark默认的端口和主机
     def __init__(self):
         cf = configparser.ConfigParser()
-        cf.read("bark.conf")
-        secs = cf.sections()
-        opts = cf.options("bark")
-        kvs = cf.items("bark")
+
+
+        pwd = os.path.dirname(os.path.abspath(__file__))
+        cf.read(pwd+"/bark.conf")
+        # secs = cf.sections()
+        # opts = cf.options("bark")
+        # kvs = cf.items("bark")
 
         self.host = cf.get("bark","bark_host")
         self.port = cf.get("bark","bark_port")
@@ -27,13 +32,15 @@ class Bark:
     def Notice(self,msg,command,title = ''):
         url = self.GetURL(msg,command,title)
         link = quote(url,safe=string.printable)
-        print(link)
+        # print(link)
         request.urlopen(link)
 
-    #  1 代表链接跳转 0 代表不用跳转
+    #  0 代表不用跳转, 1 代表链接跳转
     def GetURL(self,msg,command,title):
         # /:key/:category/:title/:body
-        url = "http://"+ self.host + '/' + self.key + '/'
+
+
+        url = "http://"+ self.host + ':' + self.port +  '/' + self.key + '/'
         title = title + '/'
         if command == 0:
             url = url + title + msg
@@ -42,3 +49,12 @@ class Bark:
             url = url + title + msg
 
         return url
+
+
+
+#
+#
+# k = Bark()
+# k.Notice('出错12000000000000000000003了',0,'标111111题')
+#
+
