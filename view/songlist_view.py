@@ -18,17 +18,13 @@ sys.path.append(os.path.abspath(os.path.join(os.getcwd(), "/..")))
 
 # 功能尚未是实现，暂时手动填写
 def GetAllSonglistIdOfSomeone(listenerid):
-    SonglistId = ['80451166','2005781720','514237000','405940183','328240496',
-                  '328243459','328264335','328237357','328284233','328273232',
-                  '328287203','328270210','328276186','328278123','328284130',
-                  '312658362','310585729','80453180']
+    SonglistId = ['979458599']
     return SonglistId
 
 # actionname = '更新听众所有歌单'
 def DownLoadSongList():
     print('你想爬谁的歌单？输入她的id：',end='')
     listenerid = input();
-    listenerid = '74186909'
     second = 5
     print("原则上此时应该根据输入的听众id -->获取其所有歌单id，由于此功能暂未完成，手台已经手动填写完毕，休息",second,"秒")
     bar_util.bar(second)

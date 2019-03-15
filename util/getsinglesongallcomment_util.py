@@ -8,7 +8,7 @@
 
 """
 # coding = utf-8
-from Crypto.Cipher import AES
+from Crypto.Cipher import AES  #  使用模块pycryptodome
 import base64
 import requests
 import json
@@ -96,9 +96,9 @@ def crypt_api(id, offset):
 
 # 获取评论
 def get_comment(songid,step):
-    RestCycleTime = 0      #周期休息时间
+    RestCycleTime = 111      #周期休息时间
     ErrorRestTime = 5      #错误休息等待时间
-    RoutineRestTime = 0    #日常休息时间
+    RoutineRestTime = 5    #日常休息时间
     SongAction = songaction.SongAction()
     CommentAction = commentaction.CommentAction()
     commentNew = comment.Comment()
@@ -142,7 +142,7 @@ def get_comment(songid,step):
                 time.sleep(ErrorRestTime)
                 return 0
             else:
-                # 评论重复性判断   0  没有重复  1  重复
+                # 评论重复性判断   0->没有重复  1->重复
                 if judging(json_comments,songid,page) == 1:
                     msg = '评论已经重复'
                     title = '网易云音乐爬虫'

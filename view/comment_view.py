@@ -56,10 +56,9 @@ def GetAllCommentOfAllSongOfSomeOne(step,coreTotal,listenerid):
 
 
 def poolProcess():
-    listenerid = "74186909"
-    #listenerid  = input()
-    print("此时默认id= 74186909 不用输入了")
-    time.sleep(1)
+    print("输入听众的id")
+    listenerid = input()
+
     coreTotal = multiprocessing.cpu_count()   #核的数量，也就是线程的个数
     workingcoreTotal = int(coreTotal/2) - 1               #可能我孤陋寡闻没见过 ，3/5/7/9核的机器
     workingcoreTotal = 1
@@ -69,7 +68,7 @@ def poolProcess():
 
     pool.close()
     pool.join()
-    print('All subprocesses done.')
+    print('所有线程结束')
 
 
 
@@ -79,7 +78,3 @@ def poolProcess():
 def main(command):
     if command == "5":
         poolProcess()
-        # coreTotal = 1
-        # listenerid = "632781761"
-        # step = 0
-        # GetAllCommentOfAllSongOfSomeOne(step,coreTotal,listenerid)
