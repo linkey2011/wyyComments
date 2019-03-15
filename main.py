@@ -9,13 +9,13 @@ import sys
 sys.path.append(os.getcwd())
 print(os.getcwd())
 import time
-CONTEXT = "[*]:主菜单\n" \
-          "[1]:添加听众\n" \
+
+CONTEXT = "[1]:添加听众\n" \
           "[2]:更新某位听众的歌单\n" \
           "[3]:获取库中已有的听众id\n" \
           "[4]:展示库中某位听众的全部歌曲\n" \
           "[5]:爬取某位听众歌单里所有歌曲的评论,支持 断点续爬 😄，输入她的id\n" \
-          "[0]:退出当前功能，返回主菜单" \
+          "[0]:显示主菜单\n" \
           "[#]:退出程序\n"
 
 def Start():
@@ -53,6 +53,7 @@ def Start():
             feedback_util.MyFeedback(actionname,result)
 
         elif myCommand == "0":
+            print(CONTEXT)
             pass
         elif myCommand == "#":
             print("程序结束")
